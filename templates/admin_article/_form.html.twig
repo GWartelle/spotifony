@@ -1,0 +1,27 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="mb-3">
+        {{ form_label(form.title, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.title) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.content, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control', 'rows': 5}}) }}
+        {{ form_errors(form.content) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.publicationDate, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.publicationDate, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.publicationDate) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.author, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.author, {'attr': {'class': 'form-select'}}) }}
+        {{ form_errors(form.author) }}
+    </div>
+
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
