@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+
+    <p>{{ article.content }}</p>
+
+    <hr>
+    <h2>Commentaires</h2>
+
+    {% if app.user %}
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary">Ajouter un commentaire</button>
+        {{ form_end(form) }}
+    {% else %}
+        <p>Vous devez être connecté pour commenter.</p>
+        <a href="{{ path('app_login') }}">Se connecter</a>
+    {% endif %}
+
+    {% for comment in article.comments %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ comment.authorName }}</h5>
+                <p class="card-text">{{ comment.content }}</p>
+                <p class="card-text"><small class="text-muted">Publié le {{ comment.createdAt|date('Y-m-d H:i:s') }}</small></p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
