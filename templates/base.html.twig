@@ -24,7 +24,17 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('admin_article_index') }}">Articles</a>
                         </li>
-                        {# Ajoutez d'autres liens de navigation ici #}
+                    </ul>
+                     <ul class="navbar-nav ms-auto">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
