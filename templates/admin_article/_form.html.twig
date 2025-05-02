@@ -12,6 +12,18 @@
     </div>
 
     <div class="mb-3">
+    {{ form_label(form.artistName, null, {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.artistName, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.artistName) }}
+    </div>
+
+    <div class="mb-3">
+    {{ form_label(form.artistDescription, null, {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.artistDescription, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+    {{ form_errors(form.artistDescription) }}
+    </div>
+
+    <div class="mb-3">
         {{ form_label(form.publicationDate, null, {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.publicationDate, {'attr': {'class': 'form-control'}}) }}
         {{ form_errors(form.publicationDate) }}

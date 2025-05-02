@@ -43,6 +43,15 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 255)]
+    #[Groups("article:read")]
+    private ?string $artistName = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups("article:read")]
+    private ?string $artistDescription = null;
+
     /**
      * @var Collection<int, Comment>
      */
@@ -104,6 +113,27 @@ class Article
     {
         $this->author = $author;
 
+        return $this;
+    }
+    public function getArtistName(): ?string
+    {
+        return $this->artistName;
+    }
+
+    public function setArtistName(?string $artistName): static
+    {
+        $this->artistName = $artistName;
+        return $this;
+    }
+
+    public function getArtistDescription(): ?string
+    {
+        return $this->artistDescription;
+    }
+
+    public function setArtistDescription(?string $artistDescription): static
+    {
+        $this->artistDescription = $artistDescription;
         return $this;
     }
 

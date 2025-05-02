@@ -40,6 +40,21 @@ class ArticleType extends AbstractType
                 'choice_label' => 'email',
                 'label' => 'Auteur',
             ])
+            ->add('artistName', TextType::class, [
+                'label' => 'Nom de l’artiste',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Nom de l’artiste',
+                ],
+            ])
+            ->add('artistDescription', TextareaType::class, [
+                'label' => 'Description de l’artiste',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Description de l’artiste',
+                    'rows' => 5,
+                ],
+            ])
         ;
     }
 
