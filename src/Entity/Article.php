@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups; // Ajoute cette ligne
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -15,6 +16,7 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("article:read")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -25,13 +27,16 @@ class Article
         minMessage: "Le titre doit contenir au moins {{ limit }} caractères",
         maxMessage: "Le titre ne doit pas dépasser {{ limit }} caractères",
     )]
+    #[Groups("article:read")]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message: "Le contenu est obligatoire")]
+    #[Groups("article:read")]
     private ?string $content = null;
 
     #[ORM\Column(nullable: true, type: Types::DATETIME_MUTABLE)]
+    #[Groups("article:read")]
     private ?\DateTimeInterface $publicationDate = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
